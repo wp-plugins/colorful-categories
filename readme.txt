@@ -12,13 +12,18 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 New Categories widget in the awesome style! Bring colours to your categories widget - make every category in own colour.
 
-Features:
+<h4>Features:</h4>
+
 - custom taxonomies support
 - manually customize colours for each category
 - intelligent (automatic) colours selection
 - different themes
 - easy to customize
 - responsive and flexible widget
+
+<h4>More Information</h4>
+
+Visit the <a rel="nofollow" href="http://parkhomov.com/colorful-categories/">plugin website</a> for more information about Colorful Categories.
 
 == Installation ==
 
