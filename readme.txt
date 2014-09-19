@@ -15,12 +15,12 @@ New Categories widget in the awesome style! Bring colours to your categories wid
 <h4>Features:</h4>
 
 <ul>
-<li>- custom taxonomies support</li>
-<li>- manually customize colours for each category</li>
-<li>- intelligent (automatic) colours selection</li>
-<li>- different themes</li>
-<li>- easy to customize</li>
-<li>- responsive and flexible widget</li>
+<li>custom taxonomies support</li>
+<li>manually customize colours for each category</li>
+<li>intelligent (automatic) colours selection</li>
+<li>different themes</li>
+<li>easy to customize</li>
+<li>responsive and flexible widget</li>
 </ul>
 
 <h4>More Information</h4>
