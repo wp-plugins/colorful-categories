@@ -121,10 +121,18 @@ class ColorfulCategoriesWidget extends WP_Widget
             </style>
             <?php
         }
-        ?>
-        <ul class="colorful-categories<?=empty($instance['theme']) ? '' : ' ' . esc_attr($instance['theme'])?>">
+
+        $terms = get_terms($t, apply_filters('colorful_categories_get_terms', array( 'hide_empty' => !$e )));
+        if(empty($terms)) {
+
+            echo '<p class="colorful-categories-not-found">' . apply_filters('colorful-categories-not-found', __('List is empty'), $t) . '</p>';
+
+        } else {
+
+            ?>
+            <ul class="colorful-categories<?=empty($instance['theme']) ? '' : ' ' . esc_attr($instance['theme'])?>">
             <?php
-            $terms = get_terms($t, apply_filters('colorful_categories_get_terms', array( 'hide_empty' => !$e )));
+
             foreach($terms as $term) {
 
                 $posts_page = ('page' == get_option('show_on_front') && get_option('page_for_posts')) ? get_permalink(get_option('page_for_posts')) : home_url('/');
@@ -142,9 +150,9 @@ class ColorfulCategoriesWidget extends WP_Widget
 
                 echo '<li class="' . esc_attr($term->slug) . '"><a href="' . $posts_page . '" style="background-color: ' . $color . ';">' . $text . '</a></li>';
             }
-            ?>
-        </ul>
-        <?php
+
+            echo '</ul>';
+        }
 
         echo $args['after_widget'];
     }

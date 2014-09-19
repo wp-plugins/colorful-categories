@@ -3,7 +3,7 @@
  Plugin Name: Colorful Categories
  Plugin URI: http://parkhomov.com/colorful-categories
  Description: New Categories widget in the awesome style! Bring colours to your categories widget - make every category in own colour.
- Version: 1.0
+ Version: 1.0.1
  Author: Artem Parkhomov
  Author URI: http://parkhomov.com
  Text Domain: colorful-categories
@@ -15,7 +15,7 @@
  */
 class ColorfulCategories
 {
-    public $version = '1.0';
+    public $version = '1.0.1';
 
     /**
      * Plugin constructor.
@@ -135,9 +135,8 @@ class ColorfulCategories
     public static function getTaxonomies()
     {
         return get_taxonomies(array(
-            'public'       => true,
-            'show_ui'      => true,
-            'hierarchical' => true
+            'public'  => true,
+            'show_ui' => true
         ));
     }
 
@@ -159,8 +158,8 @@ class ColorfulCategories
             '#81AC04', '#89A7FF', '#AB0600', '#AC0258', '#AE00AA', '#B300FE', '#B251FE', '#D40A00', '#D50658', '#D50184',
             '#D600AA', '#D35C00', '#D45B58', '#D658AA', '#D38700', '#D1AD02', '#FF0F00', '#FF0B57', '#FF00FE', '#FF5E00',
             '#FF5D58', '#FF5B84', '#FE8800', '#FF8684', '#FDAE01', '#1A1A1A', '#4B4B4B', '#A7C711', '#26B6FB', '#EF9227',
-            '#FCD65A', '#FFAAD3', '#D7A8FF', '#ADD2FF', '#84FEFF', '#A7D585', '#7CDD9E', '#7CFF86', '#FCD603', '#00FF86',
-            '#E81B10', '#FF671C', '#FFC444', '#E1FF00', '#8EF704', '#0ED800', '#00EAA8', '#B144FF', '#4E44FF', '#E8194D'
+            '#FCD65A', '#FFAAD3', '#D7A8FF', '#ADD2FF', '#84FEFF', '#7CC942', '#7CDD9E', '#7CFF86', '#FCD603', '#00FF86',
+            '#E81B10', '#FF671C', '#FFC444', '#C7E008', '#8EF704', '#0ED800', '#00EAA8', '#B144FF', '#4E44FF', '#E8194D'
         );
 
         return apply_filters('colorful_categories_colors', $availablePackOfColors);
