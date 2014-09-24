@@ -135,8 +135,6 @@ class ColorfulCategoriesWidget extends WP_Widget
 
             foreach($terms as $term) {
 
-                $posts_page = ('page' == get_option('show_on_front') && get_option('page_for_posts')) ? get_permalink(get_option('page_for_posts')) : home_url('/');
-                $posts_page = esc_url($posts_page);
                 $text = stripslashes($term->name);
                 if($c) {
                     $text .= ' <sup>' . $term->count . '</sup>';
@@ -148,7 +146,7 @@ class ColorfulCategoriesWidget extends WP_Widget
                     $color = $colors[$term->term_id];
                 }
 
-                echo '<li class="' . esc_attr($term->slug) . '"><a href="' . $posts_page . '" style="background-color: ' . $color . ';">' . $text . '</a></li>';
+                echo '<li class="' . esc_attr($term->slug) . '"><a href="' . esc_url(get_term_link($term)) . '" style="background-color: ' . $color . ';">' . $text . '</a></li>';
             }
 
             echo '</ul>';

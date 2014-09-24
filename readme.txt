@@ -54,6 +54,9 @@ For example category that contains Facebook will be colored to the dark blue col
 
 == Changelog ==
 
+= 1.0.2 = 
+* Fixed link to the term (category, tag, etc).
+
 = 1.0.1 =
 * Added support for non hierarchical taxonomies.
 * Added customizable message 'List is empty' in case if there is nothing to display in the widget.
