@@ -54,6 +54,9 @@ For example category that contains Facebook will be colored to the dark blue col
 
 == Changelog ==
 
+= 1.0.4 = 
+* Added field to exclude categories from the widget.
+
 = 1.0.3 = 
 * Fixed colours column.
 

@@ -66,6 +66,12 @@ class ColorfulCategoriesWidget extends WP_Widget
             </select>
         </p>
 
+        <p>
+            <label for="<?php echo $this->get_field_id('excluded'); ?>"><?php _e( 'Excluded categories IDs (comma separated):', 'colorful-categories' ); ?></label>
+            <br />
+            <textarea id="<?php echo $this->get_field_id('excluded'); ?>" name="<?php echo $this->get_field_name('excluded'); ?>" style="width: 100%;"><?=esc_textarea($instance['excluded'])?></textarea>
+        </p>
+
         <?php
     }
 
@@ -77,6 +83,7 @@ class ColorfulCategoriesWidget extends WP_Widget
         $instance['empty'] = !empty($new_instance['empty']) ? 1 : 0;
         $instance['count'] = !empty($new_instance['count']) ? 1 : 0;
         $instance['theme'] = sanitize_text_field($new_instance['theme']);
+        $instance['excluded'] = sanitize_text_field($new_instance['excluded']);
         return $instance;
     }
 
@@ -122,7 +129,7 @@ class ColorfulCategoriesWidget extends WP_Widget
             <?php
         }
 
-        $terms = get_terms($t, apply_filters('colorful_categories_get_terms', array( 'hide_empty' => !$e )));
+        $terms = get_terms($t, apply_filters('colorful_categories_get_terms', array( 'hide_empty' => !$e, 'exclude' => $instance['excluded'] )));
         if(empty($terms)) {
 
             echo '<p class="colorful-categories-not-found">' . apply_filters('colorful-categories-not-found', __('List is empty'), $t) . '</p>';
