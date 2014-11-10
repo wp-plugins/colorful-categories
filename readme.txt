@@ -54,6 +54,10 @@ For example category that contains Facebook will be colored to the dark blue col
 
 == Changelog ==
 
+= 1.0.5 = 
+* Added field to limit categories to be displayed for the widget.
+* Fixed field to select theme.
+
 = 1.0.4 = 
 * Added field to exclude categories from the widget.
 

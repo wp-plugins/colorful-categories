@@ -31,6 +31,8 @@ class ColorfulCategoriesWidget extends WP_Widget
         $instance = wp_parse_args((array) $instance, array('title' => '', 'taxonomy' => ''));
         $title = esc_attr($instance['title']);
         $count = isset($instance['count']) ? (bool) $instance['count'] : false;
+        $excluded = isset($instance['excluded']) ? trim($instance['excluded']) : '';
+        $limit = isset($instance['limit']) ? (int) $instance['limit'] : '';
         ?>
         <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'colorful-categories' ); ?></label>
         <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
@@ -59,17 +61,19 @@ class ColorfulCategoriesWidget extends WP_Widget
             <select id="<?php echo $this->get_field_id('theme'); ?>" name="<?php echo $this->get_field_name('theme'); ?>">
                 <?php
                 foreach($this->getThemes() as $slug => $name) {
-                    $value = empty($instance['theme']) ? 'bubble' : $instance['theme'];
-                    echo '<option value="' . $slug . '" ' . selected($slug, $value) . '>' . stripslashes($name) . '</option>';
+                    echo '<option value="' . $slug . '" ' . selected($slug, $instance['theme']) . '>' . stripslashes($name) . '</option>';
                 }
                 ?>
             </select>
         </p>
 
+        <p><label for="<?php echo $this->get_field_id('limit'); ?>"><?php _e( 'Limit items (0 means no limit):', 'colorful-categories' ); ?></label>
+        <input class="widefat" id="<?php echo $this->get_field_id('limit'); ?>" name="<?php echo $this->get_field_name('limit'); ?>" type="text" maxlength="3" value="<?php echo $limit; ?>" /></p>
+
         <p>
             <label for="<?php echo $this->get_field_id('excluded'); ?>"><?php _e( 'Excluded categories IDs (comma separated):', 'colorful-categories' ); ?></label>
             <br />
-            <textarea id="<?php echo $this->get_field_id('excluded'); ?>" name="<?php echo $this->get_field_name('excluded'); ?>" style="width: 100%;"><?=esc_textarea($instance['excluded'])?></textarea>
+            <textarea id="<?php echo $this->get_field_id('excluded'); ?>" name="<?php echo $this->get_field_name('excluded'); ?>" style="width: 100%;"><?=esc_textarea($excluded)?></textarea>
         </p>
 
         <?php
@@ -83,6 +87,7 @@ class ColorfulCategoriesWidget extends WP_Widget
         $instance['empty'] = !empty($new_instance['empty']) ? 1 : 0;
         $instance['count'] = !empty($new_instance['count']) ? 1 : 0;
         $instance['theme'] = sanitize_text_field($new_instance['theme']);
+        $instance['limit'] = (int) $new_instance['limit'];
         $instance['excluded'] = sanitize_text_field($new_instance['excluded']);
         return $instance;
     }
@@ -94,6 +99,7 @@ class ColorfulCategoriesWidget extends WP_Widget
         $t = isset($instance['taxonomy']) ? $instance['taxonomy'] : 'category';
         $c = !empty($instance['count']);
         $e = !empty($instance['empty']);
+        $l = $instance['limit'] > 0 ? $instance['limit'] : '';
 
         echo $args['before_widget'];
         if($title) {
@@ -129,7 +135,7 @@ class ColorfulCategoriesWidget extends WP_Widget
             <?php
         }
 
-        $terms = get_terms($t, apply_filters('colorful_categories_get_terms', array( 'hide_empty' => !$e, 'exclude' => $instance['excluded'] )));
+        $terms = get_terms($t, apply_filters('colorful_categories_get_terms', array( 'hide_empty' => !$e, 'exclude' => $instance['excluded'], 'number' => $l )));
         if(empty($terms)) {
 
             echo '<p class="colorful-categories-not-found">' . apply_filters('colorful-categories-not-found', __('List is empty'), $t) . '</p>';
