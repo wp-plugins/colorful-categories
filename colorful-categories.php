@@ -3,7 +3,7 @@
  Plugin Name: Colorful Categories
  Plugin URI: http://parkhomov.com/colorful-categories
  Description: New Categories widget in the awesome style! Bring colours to your categories widget - make every category in own colour.
- Version: 1.0.2
+ Version: 1.0.3
  Author: Artem Parkhomov
  Author URI: http://parkhomov.com
  Text Domain: colorful-categories
@@ -15,7 +15,7 @@
  */
 class ColorfulCategories
 {
-    public $version = '1.0.2';
+    public $version = '1.0.3';
 
     /**
      * Plugin constructor.
@@ -278,6 +278,10 @@ class ColorfulCategories
      */
     public function modifyColumn($null, $columnName, $termId)
     {
+		if($columnName !== 'color') {
+            return;
+        }
+	
         $taxonomy = sanitize_text_field($_GET['taxonomy']);
 
         $options = get_option($taxonomy . '_colors', array());

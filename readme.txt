@@ -54,6 +54,9 @@ For example category that contains Facebook will be colored to the dark blue col
 
 == Changelog ==
 
+= 1.0.3 = 
+* Fixed colours column.
+
 = 1.0.2 = 
 * Fixed link to the term (category, tag, etc).
 
