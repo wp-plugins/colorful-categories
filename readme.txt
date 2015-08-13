@@ -3,7 +3,7 @@ Contributors: madeinua
 Donate link: http://parkhomov.com/colorful-categories
 Tags: categories, widget, colored, colorful categories
 Requires at least: 3.6
-Tested up to: 4.1
+Tested up to: 4.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
